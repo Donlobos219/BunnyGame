@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - ground
+  - Roca
+  - Piso
+  - Raton
+  - Key
+  - Door
+  - Nivel2
+  - Nivel3
+  - DestroyTriggerTutorial
+  - EnemigoNivel3
+  - TriggerNivel2
+  - DestroyTrigger1
+  - Nivel1
+  - DestroyTriggerNivel4
+  - Nivel4
+  - Nivel6
+  - Suelo
+  - Caja
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Post-Processing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

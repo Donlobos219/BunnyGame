@@ -1,0 +1,100 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ballthrow2 : MonoBehaviour
+{
+    public static Vector3 playerPos;
+
+    private Rigidbody rb;
+
+    float xroat, yroat = 0f;
+    public Rigidbody ball;
+    public float rotatespeed = 5f;
+    public LineRenderer Line;
+    public float shootpower = 30f;
+
+    float min = -170;
+    float max = 20;
+
+    bool onGround = true;
+    bool canDoubleJump = false;
+
+    
+
+
+    
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(TrackPlayer());
+
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Rotate()
+    {
+
+        RaycastHit hit;
+        Vector3 physicsCentre = this.transform.position + this.GetComponent<CapsuleCollider>().center;
+        if (Physics.Raycast(physicsCentre, Vector3.down, out hit, 1.0f))
+        {
+            onGround = true;
+        }
+        else
+        {
+            onGround = false;
+        }
+    }
+
+    
+ 
+    // Update is called once per frame
+    void Update()
+    {
+        Rotate();
+
+        transform.position = ball.position;
+        if (Input.GetMouseButton(0))
+            {
+             
+                    xroat += Input.GetAxis("Mouse X") * rotatespeed;
+                    yroat += Input.GetAxis("Mouse Y") * rotatespeed;
+                    yroat = Mathf.Clamp(yroat, min, max);
+                    transform.rotation = Quaternion.Euler(-yroat, xroat, 0f);
+                    Line.gameObject.SetActive(true);
+                    Line.SetPosition(0, transform.position);
+                    Line.SetPosition(1, transform.position + transform.forward * 4f);
+                    if (yroat < -35f)
+                    {
+                        yroat = -35f;
+                    }
+
+                    
+             }
+        
+
+        
+            if (Input.GetMouseButtonUp(0))
+        {
+           
+            
+                ball.velocity = transform.forward * shootpower;
+                Line.gameObject.SetActive(false);
+            
+        }
+
+    }
+    
+    IEnumerator TrackPlayer()
+    {
+        while (true)
+        {
+            playerPos = gameObject.transform.position;
+            yield return null;
+        }
+    }
+
+}
